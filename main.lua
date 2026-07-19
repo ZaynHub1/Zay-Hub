@@ -1,24 +1,111 @@
---!strict
--- [ ZAYN HUB ULTRA PROTECTED SYSTEM ] --
--- Source code asli terkunci rapat di dalam String terkompresi.
+local player = game.Players.LocalPlayer
+local starterGui = player:WaitForChild("PlayerGui")
+local userInputService = game:GetService("UserInputService")
 
-local base64Data = "bG9jYWwgYSA9IGdhbWUuUGxheWVycy5Mb2NhbFBsYXllcgpsb2NhbCBiID0gYTpXYWl0Rm9yQ2hpbGQoIlBsYXllckd1aSIpCmxvY2FsIGMgPSBnYW1lOkdldFNlcnZpY2UoIlVzZXJJbnB1dFNlcnZpY2UiKQpsb2NhbCBkID0gQ0ZyYW1lLm5ldygtMC4xMjAwODgzMTcsIDUuOTI2MjY0MjksIDk0LjE3MTUzOTMsIC0wLjk4NzY4ODE4NCwgMC4wMTkzNTM2ODU5LCAtMC4xNTUyMzM1OTIsIC02LjY0NjQzNjczZS0wOSwgMC55OTIzMTc1NTcsIDAuMTIzNzE2ODM5LCAwLjE1NjQzNTM4NSwgMC4xMjIxOTM2NjQsIC0wLjk4MDEwMDMzNCkKbG9jYWwgZSA9IENGcmFtZS5uZXcoNTMuNzI5NTUzMiwgNTI0LjA4NTU3MSwgLTE5NS42MDg1MDUsIC0wLjA1ODE0Mzk4ODMsIDAuMTc1NDcwOTMzLCAtMC4xODI3NjYwOTIsIC0xLjU1MDIwMTM5ZS0wOCwgMC45ODQ0MzE1NjUsIDAuMTc1NzY4MzAxLCAwLjk5ODMwODE4MiwgMC4wMTAyMTk4ODUsIC0wLjA1NzIzODc3MjUpCmxvY2FsIGYgPSBJbnN0YW5jZS5uZXcoIlNjcmVlbkd1aSIpCmYuTmFtZSA9ICJUZW5rYUh1Ykd1aSIKZi5SZXNldE9uU3Bhd24gPSBmYWxzZQpmLlBhcmVudCA9IGIKbG9jYWwgZyA9IEluc3RhbmNlLm5ldygiRnJhbWUiKQpnLk5hbWUgPSAiTWFpbkZyYW1lIihnLlNpemUgPSBVRGltMi5uZXcoMCwgMjIwLCAwLCAxMTApCmcuUG9zaXRpb24gPSBVRGltMi5uZXcoMC41LCAtMTEwLCAwLjUsIC01NSkKZy5CYWNrZ3JvdW5kQ29sb3IzID0gQ29sb3IzLmZyb21SR0IoMjAsIDIwLCAyMCkKZy5Cb3JkZXJTaXplUGl4ZWwgPSAxCmcuQm9yZGVyQ29sb3IzID0gQ29sb3IzLmZyb21SR0IoMjU1LCAyNTUsIDI1NSkKZy5QYXJlbnQgPSBmCmxvY2FsIGggPSBJbnN0YWNlLm5ldygiVUlDb3JuZXIiKQpoLkNvcm5lclJhZGl1cyA9IFVESW0ubmV3KDAsIDgpCmguUGFyZW50ID0gZwpsb2NhbCBpID0gSW5zdGFuY2UubmV3KCJJbWFnZUxhYmVsIikKaS5OYW1lID0gIkRyYWdJY29uIAppLlNpemUgPSBVRGltMi5uZXcoMCwgMzIsIDAsIDMyKQppLlBvc2l0aW9uID0gVURpbTIubmV3KDAsIDEwLCAwLCAxMCkKaS5CYWNrZ3JvdW5kVHJhbnNwYXJlbmN5ID0gMQppLkltYWdlID0gInJieGFzc2V0aWQ6Ly8xMDA5MDAwNTY3MzcxMDIiCmkuUGFyZW50ID0gZwpsb2NhbCBqID0gSW5zdGFuY2UubmV3KCJVSUNvcm5lciIpCmouQ29ybmVyUmFkaXVzID0gVURpbS5uZXcoMSwgMCkKai5QYXJlbnQgPSBpc2xvY2FsIGsgPSBJbnN0YWNlLm5ldygiVGV4dEJ1dHRvbiIpCmsuTmFtZSA9ICJUb2dnbGVCdXR0b24iCmsuU2l6ZSA9IFVESW0yLm5ldygwLCAxODAsIDAsIDQ1KQprLlBvc2l0aW9uID0gVURpbTIubmV3KDAuNSwgLTkwLCAwLjUsIC01KQprLkJhY2tncm91bmRDb2xvcjMgPSBDb2xvcjMuZnJvbVJHQigzMCwgMzAsIDMwKQprLlRleHRDb2xvcjMgPSBDb2xvcjMuZnJvbVJHQigyNTUsIDI1NSwgMjU1KQprLlRleHRTaXplID0gMTYKay5Gb250ID0gRW51bS5Gb250LlNvdXJjZVNhbnNCb2xkCmsuVGV4dSA9ICJTdGFydCBUZWxlcG9ydCIKay5Cb3JkZXJTaXplUGl4ZWwgPSAxCmsuQm9yZGVyQ29sb3IzID0gQ29sb3IzLmZyb21SR0IoMjU1LCAyNTUsIDI1NSkKay5QYXJlbnQgPSBnbG9jYWwgbCA9IEluc3RhbmNlLm5ldygiVUlDb3JuZXIiKQpsLkNvcm5lclJhZGl1cyA9IFVESW0ubmV3KDAsIDYpCmwuUGFyZW50ID0ga2xvY2FsIG0sIG4sIG8sIHAKbG9jYWwgZnVuY3Rpb24gcShpbnB1dCkgbG9jYWwgZGVsdGEgPSBpbnB1dC5Qb3NpdGlvbiAtIG8gZy5Qb3NpdGlvbiA9IFVESW0yLm5ldyhwLlguU2NhbGUsIHAuWC5PZmZzZXQgKyBkZWx0YS5YLCBwLlkuU2NhbGUsIHAuWS5PZmZzZXQgKyBkZWx0YS5ZKSBlbmQgaS5JbnB1dEJlZ2FuOkNvbm5lY3QoZnVuY3Rpb24oaW5wdXQpIGlmIGlucHV0LlVzZXJJbnB1dFR5cGUgPT0gRW51bS5Vc2VySW5wdXRUeXBlLk1vdXNlQnV0dG9uMSBvciBpbnB1dC5Vc2VySW5wdXRUeXBlLlRvdWNoIHRoZW4gbSA9IHRydWUgbyA9IGlucHV0LlBvc2l0aW9uIHAgPSBnLlBvc2l0aW9uIGlucHV0LkNoYW5nZWQ6Q29ubmVjdChmdW5jdGlvbigpIGlmIGlucHV0LlVzZXJJbnB1dFN0YXRlID09IEVudW0uVXNlcklucHV0U3RhdGUuRW5kIHRoZW4gbSA9IGZhbHNlIGVuZCBlbmQpIGVuZCBlbmQpIGkuSW5wdXRDaGFuZ2VkOkNvbm5lY3QoZnVuY3Rpb24oaW5wdXQpIGlmIGlucHV0LlVzZXJJbnB1dFR5cGUgPT0gRW51bS5Vc2VySW5wdXRUeXBlLk1vdXNlTW92ZW1lbnQgb3IgaW5wdXQuVXNlcklucHV0VHlwZSLlVG91Y2ggdGhlbiBuID0gaW5wdXQgZW5kIGVuZCkgYy5JbnB1dENoYW5nZWQ6Q29ubmVjdChmdW5jdGlvbihpbnB1dCkgaWYgaW5wdXQgPT0gbiBhbmQgbSB0aGVuIHEoaW5wdXQpIGVuZCBlbmQpIGxvY2FsIHIgPSBmYWxzZSBsb2NhbCBmdW5jdGlvbiBzKCkgd2hpbGUgciBkbyBsb2NhbCB0ID0gYS5DaGFyYWN0ZXIgb3IgYS5DaGFyYWN0ZXJBZGRlZDpXYWl0KCkgbG9jYWwgdSA9IHQ6V2FpdEZvckNoaWxkKCJIdW1hbm9pZFJvb3RQYXJ0IikgdS5DRnJhbWUgPSBkIHRhc2sud2FpdCgwLjUpIGlmIG5vdCByIHRoZW4gYnJlYWsgZW5kIHUuQ0ZyYW1lID0gZSB0YXNrLndhaXQoMC41KSBlbmQgZW5kIGsuTW91c2VCdXR0b24xQ2xpY2s6Q29ubmVjdChmdW5jdGlvbigpIHIgPSBub3QgciBpZiByIHRoZW4gay5UZXh0ID0gIlsQWN0aXZlXSBTdG9wIiBrLlRleHRDb2xvcjMgPSBDb2xvcjMuZnJvbVJHQigyNTUsIDEwMCwgMTAwKSB0YXNrLnNwYXduKHMpIGVsc2Ugay5UZXh0ID0gIlN0YXJ0IFRlbGVwb3J0IiBrLlRleHRDb2xvcjMgPSBDb2xvcjMuZnJvbVJHQigyNTUsIDI1NSwgMjU1KSBlbmQgZW5kKQ=="
+local titik1 = CFrame.new(-0.120088317, 5.92626429, 94.1715393, -0.987688184, 0.0193536859, -0.155233592, -6.64643673e-09, 0.992317557, 0.123716839, 0.156435385, 0.122193664, -0.980100334)
+local titik2 = CFrame.new(53.7295532, 524.085571, -195.608505, -0.0581439883, 0.175470933, -0.982766092, -1.55020139e-08, 0.984431565, 0.175768301, 0.998308182, 0.010219885, -0.0572387725)
 
--- Fungsi internal decoder untuk menerjemahkan string Base64 di atas secara langsung di RAM game
-local b = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
-local function decode(data)
-    data = string.gsub(data, '[^'..b..'=]', '')
-    return (data:gsub('.', function(x)
-        if (x == '=') then return '' end
-        local r,f='',(b:find(x)-1)
-        for i=6,1,-1 do r=r..(f%2^i-f%2^(i-1)>0 and '1' or '0') end
-        return r;
-    end):gsub('%d%d%d%d%d%d%d%d', function(x)
-        local r=0
-        for i=1,8 do r=r+(x:sub(i,i)=='1' and 2^(8-i) or 0) end
-        return string.char(r)
-    end))
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "TenkaHubGui"
+screenGui.ResetOnSpawn = false
+screenGui.Parent = starterGui
+
+local mainFrame = Instance.new("Frame")
+mainFrame.Name = "MainFrame"
+mainFrame.Size = UDim2.new(0, 220, 0, 110)
+mainFrame.Position = UDim2.new(0.5, -110, 0.5, -55) -- Pas di tengah layar kamu!
+mainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+mainFrame.BorderSizePixel = 1
+mainFrame.BorderColor3 = Color3.fromRGB(255, 255, 255)
+mainFrame.Parent = screenGui
+
+local mainCorner = Instance.new("UICorner")
+mainCorner.CornerRadius = UDim.new(0, 8)
+mainCorner.Parent = mainFrame
+
+local dragIcon = Instance.new("ImageLabel")
+dragIcon.Name = "DragIcon"
+dragIcon.Size = UDim2.new(0, 32, 0, 32)
+dragIcon.Position = UDim2.new(0, 10, 0, 10)
+dragIcon.BackgroundTransparency = 1
+dragIcon.Image = "rbxassetid://100900056737102"
+dragIcon.Parent = mainFrame
+
+local iconCorner = Instance.new("UICorner")
+iconCorner.CornerRadius = UDim.new(1, 0)
+iconCorner.Parent = dragIcon
+
+local button = Instance.new("TextButton")
+button.Name = "ToggleButton"
+button.Size = UDim2.new(0, 180, 0, 45)
+button.Position = UDim2.new(0.5, -90, 0.5, -5)
+button.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+button.TextColor3 = Color3.fromRGB(255, 255, 255)
+button.TextSize = 16
+button.Font = Enum.Font.SourceSansBold
+button.Text = "Start Teleport"
+button.BorderSizePixel = 1
+button.BorderColor3 = Color3.fromRGB(255, 255, 255)
+button.Parent = mainFrame
+
+local buttonCorner = Instance.new("UICorner")
+buttonCorner.CornerRadius = UDim.new(0, 6)
+buttonCorner.Parent = button
+
+local dragging, dragInput, dragStart, startPos
+
+local function update(input)
+    local delta = input.Position - dragStart
+    mainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
 end
 
--- Menjalankan script asli secara aman dan instan
-assert(loadstring(decode(base64Data)))()
+dragIcon.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = true
+        dragStart = input.Position
+        startPos = mainFrame.Position
+        
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+
+dragIcon.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+        dragInput = input
+    end
+end)
+
+userInputService.InputChanged:Connect(function(input)
+    if input == dragInput and dragging then
+        update(input)
+    end
+end)
+
+local isTeleporting = false
+local function startLoop()
+    while isTeleporting do
+        local character = player.Character or player.CharacterAdded:Wait()
+        local rootPart = character:WaitForChild("HumanoidRootPart")
+        rootPart.CFrame = titik1
+        task.wait(0.5)
+        if not isTeleporting then break end
+        rootPart.CFrame = titik2
+        task.wait(0.5)
+    end
+end
+
+button.MouseButton1Click:Connect(function()
+    isTeleporting = not isTeleporting
+    if isTeleporting then
+        button.Text = "[Active] Stop"
+        button.TextColor3 = Color3.fromRGB(255, 100, 100)
+        task.spawn(startLoop)
+    else
+        button.Text = "Start Teleport"
+        button.TextColor3 = Color3.fromRGB(255, 255, 255)
+    end
+end)
