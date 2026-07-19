@@ -1,23 +1,128 @@
---!strict
--- [ ZAYN HUB PROTECTED SYSTEM v4 ] --
--- Source code asli dilindungi dan terenkripsi secara total.
+local player = game.Players.LocalPlayer
+local starterGui = player:WaitForChild("PlayerGui")
+local userInputService = game:GetService("UserInputService")
 
-local dataEnkripsi = {1, 10, 8, 10, 7, 39, 107, 10, 10, 6, 8, 41, 75, 107, 85, 11, 74, 90, 80, 77, 92, 12, 10, 93, 71, 85, 94, 78, 93, 64, 41, 67, 94, 78, 93, 90, 85, 93, 94, 78, 93, 11, 8, 10, 2, 5, 93, 90, 67, 86, 91, 66, 91, 60, 94, 82, 93, 65, 90, 85, 93, 56, 43, 67, 94, 78, 93, 90, 85, 93, 94, 78, 93, 56, 68, 87, 86, 93, 78, 67, 93, 66, 94, 78, 93, 76, 82, 95, 93, 66, 82, 91, 93, 91, 66, 82, 91, 93, 65, 90, 85, 93, 11, 8, 10, 2, 5, 93, 67, 86, 91, 66, 91, 60, 94, 82, 93, 65, 90, 85, 93, 56, 21, 80, 92, 82, 38, 82, 91, 66, 46, 91, 82, 70, 42, 60, 91, 82, 82, 91, 74, 94, 82, 10, 10, 12, 10, 93, 83, 70, 93, 80, 86, 82, 91, 15, 80, 85, 93, 13, 85, 84, 86, 90, 80, 93, 72, 33, 87, 90, 86, 86, 27, 85, 93, 86, 90, 107, 7, 86, 90, 93, 22, 86, 90, 93, 15, 68, 86, 90, 86, 90, 12, 85, 87, 85, 29, 68, 86, 90, 86, 90, 12, 70, 84, 92, 80, 41, 80, 95, 64, 80, 93, 93, 82, 80, 20, 84, 92, 43, 67, 87, 82, 93, 27, 90, 82, 90, 22, 92, 82, 90, 15, 80, 85, 93, 13, 85, 84, 86, 90, 80, 93, 72, 33, 87, 90, 86, 86, 27, 85, 93, 86, 90, 107, 7, 86, 90, 93, 22, 86, 90, 93, 15, 68, 86, 90, 86, 90, 12, 85, 87, 85, 29, 68, 86, 90, 86, 90, 12, 70, 84, 92, 80, 41, 80, 95, 64, 80, 93, 93, 82, 80, 20, 84, 92, 43, 67, 87, 82, 93, 27, 90, 82, 90, 22, 92, 82, 90, 15, 80, 85, 93, 13, 85, 84, 86, 90, 80, 93, 72, 33, 87, 90, 86, 86, 27, 85, 93, 86, 90, 107, 7, 86, 90, 93, 22, 86, 90, 93, 15, 68, 86, 90, 86, 90, 12, 85, 87, 85, 29, 68, 86, 90, 86, 90, 12, 70, 84, 92, 80, 41, 80, 95, 64, 80, 93, 93, 82, 80, 20, 84, 92, 43, 67, 87, 82, 93, 27, 90, 82, 90, 22, 92, 82, 90, 15, 80, 85, 93, 13, 85, 84, 86, 90, 80, 93, 72, 33, 87, 90, 86, 86, 27, 85, 93, 86, 90, 107, 7, 86, 90, 93, 22, 86, 90, 93, 15, 68, 86, 90, 86, 90, 12, 85, 87, 85, 29, 68, 86, 90, 86, 90, 12, 70, 84, 92, 80, 41, 80, 95, 64, 80, 93, 93, 82, 80, 20, 84, 92, 43, 67, 87, 82, 93, 27, 90, 82, 90, 22, 92, 82, 90, 15, 80, 85, 93, 13, 85, 84, 86, 90, 80, 93, 72, 33, 87, 90, 86, 86, 27, 85, 93, 86, 90, 107, 7, 86, 90, 93, 22, 86, 90, 93, 15, 68, 86, 90, 86, 90, 12, 85, 87, 85, 29, 68, 86, 90, 86, 90, 12, 70, 84, 92, 80, 41, 80, 95, 64, 80, 93, 93, 82, 80, 20, 84, 92, 43, 67, 87, 82, 93, 27, 90, 82, 90, 22, 92, 82, 90, 15, 80, 85, 93, 13, 85, 84, 86, 90, 80, 93, 72, 33, 87, 90, 86, 86, 27, 85, 93, 86, 90, 107, 7, 86, 90, 93, 22, 86, 90, 93, 15, 68, 86, 90, 86, 90, 12, 85, 87, 85, 29, 68, 86, 90, 86, 90, 12, 70, 84, 92, 80, 41, 80, 95, 64, 80, 93, 93, 82, 80, 20, 84, 92, 43, 67, 87, 82, 93, 27, 90, 82, 90, 22, 92, 82, 90, 15, 80, 85, 93, 13, 85, 84, 86, 90, 80, 93, 72, 33, 87, 90, 86, 86, 27, 85, 93, 86, 90, 107, 7, 86, 90, 93, 22, 86, 90, 93, 15, 68, 86, 90, 86, 90, 12, 85, 87, 85, 29, 68, 86, 90, 86, 90, 12, 70, 84, 92, 80, 41, 80, 95, 64, 80, 93, 93, 82, 80, 20, 84, 92, 43, 67, 87, 82, 93, 27, 90, 82, 90, 22, 92, 82, 90, 15, 80, 85, 93, 13, 85, 84, 86, 90, 80, 93, 72, 33, 87, 90, 86, 86, 27, 85, 93, 86, 90, 107, 7, 86, 90, 93, 22, 86, 90, 93, 15, 68, 86, 90, 86, 90, 12, 85, 87, 85, 29, 68, 86, 90, 86, 90, 12, 70, 84, 92, 80, 41, 80, 95, 64, 80, 93, 93, 82, 80, 20, 84, 92, 43, 67, 87, 82, 93, 27, 90, 82, 90, 22, 92, 82, 90, 15, 80, 85, 93}
-local kunci = 107
+local titik1 = CFrame.new(-0.120088317, 5.92626429, 94.1715393, -0.987688184, 0.0193536859, -0.155233592, -6.64643673e-09, 0.992317557, 0.123716839, 0.156435385, 0.122193664, -0.980100334)
+local titik2 = CFrame.new(53.7295532, 524.085571, -195.608505, -0.0581439883, 0.175470933, -0.982766092, -1.55020139e-08, 0.984431565, 0.175768301, 0.998308182, 0.010219885, -0.0572387725)
 
--- Proses menerjemahkan angka acak di atas kembali menjadi script asli di memori RAM
-local kodeAsli = ""
-for i = 1, #dataEnkripsi do
-    local success, char = pcall(string.char, bit32.bxor(dataEnkripsi[i], kunci))
-    if success then
-        kodeAsli = kodeAsli .. char
-    end
+
+-- Gui
+
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "TenkaHubGui"
+screenGui.ResetOnSpawn = false
+screenGui.Parent = starterGui
+
+-- Main
+local mainFrame = Instance.new("Frame")
+mainFrame.Name = "MainFrame"
+mainFrame.Size = UDim2.new(0, 220, 0, 110)
+mainFrame.Position = UDim2.new(0.1, 0, 0.2, 0)
+mainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+mainFrame.BorderSizePixel = 1
+mainFrame.BorderColor3 = Color3.fromRGB(255, 255, 255)
+mainFrame.Parent = screenGui
+
+local mainCorner = Instance.new("UICorner")
+mainCorner.CornerRadius = UDim.new(0, 8)
+mainCorner.Parent = mainFrame
+
+-- Icon
+local dragIcon = Instance.new("ImageLabel")
+dragIcon.Name = "DragIcon"
+dragIcon.Size = UDim2.new(0, 32, 0, 32)
+dragIcon.Position = UDim2.new(0, 10, 0, 10)
+dragIcon.BackgroundTransparency = 1
+dragIcon.Image = "rbxassetid://100900056737102"
+dragIcon.Parent = mainFrame
+
+-- Ui
+local iconCorner = Instance.new("UICorner")
+iconCorner.CornerRadius = UDim.new(1, 0) 
+iconCorner.Parent = dragIcon
+
+-- Teleport Main
+local button = Instance.new("TextButton")
+button.Name = "ToggleButton"
+button.Size = UDim2.new(0, 180, 0, 45)
+button.Position = UDim2.new(0.5, -90, 0.5, -5)
+button.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+button.TextColor3 = Color3.fromRGB(255, 255, 255)
+button.TextSize = 16
+button.Font = Enum.Font.SourceSansBold
+button.Text = "Start Teleport"
+button.BorderSizePixel = 1
+button.BorderColor3 = Color3.fromRGB(255, 255, 255)
+button.Parent = mainFrame
+
+local buttonCorner = Instance.new("UICorner")
+buttonCorner.CornerRadius = UDim.new(0, 6)
+buttonCorner.Parent = button
+
+-- Drag
+
+local dragging, dragInput, dragStart, startPos
+
+local function update(input)
+	local delta = input.Position - dragStart
+	mainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
 end
 
--- Menjalankan script asli secara aman tanpa kebocoran source code
-local fungsi, err = loadstring(kodeAsli)
-if fungsi then
-    fungsi()
-else
-    warn("Terjadi kesalahan sistem: " .. tostring(err))
+dragIcon.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		dragging = true
+		dragStart = input.Position
+		startPos = mainFrame.Position
+		
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragging = false
+			end
+		end)
+	end
+end)
+
+dragIcon.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		dragInput = input
+	end
+end)
+
+userInputService.InputChanged:Connect(function(input)
+	if input == dragInput and dragging then
+		update(input)
+	end
+end)
+
+
+-- Loop 
+
+local isTeleporting = false 
+
+local function startLoop()
+	while isTeleporting do
+		local character = player.Character or player.CharacterAdded:Wait()
+		local rootPart = character:WaitForChild("HumanoidRootPart")
+		
+		rootPart.CFrame = titik1
+		task.wait(0.5)
+		
+		if not isTeleporting then break end
+		
+		rootPart.CFrame = titik2
+		task.wait(0.5)
+	end
 end
+
+button.MouseButton1Click:Connect(function()
+	isTeleporting = not isTeleporting 
+	
+	if isTeleporting then
+		button.Text = "[Active] Stop"
+		button.TextColor3 = Color3.fromRGB(255, 100, 100)
+		task.spawn(startLoop)
+	else
+		button.Text = "Start Teleport"
+		button.TextColor3 = Color3.fromRGB(255, 255, 255)
+	end
+end)
