@@ -1,128 +1,132 @@
-local MacLib = loadstring(game:HttpGet("https://github.com/biggaboy212/Maclib/releases/latest/download/maclib.txt"))()
+local player = game.Players.LocalPlayer
+local starterGui = player:WaitForChild("PlayerGui")
+local userInputService = game:GetService("UserInputService")
 
--- Teleport coordinate
+-- ====================================================
+-- KOORDINAT TELEPORT KAMU
+-- ====================================================
 local titik1 = CFrame.new(-0.120088317, 5.92626429, 94.1715393, -0.987688184, 0.0193536859, -0.155233592, -6.64643673e-09, 0.992317557, 0.123716839, 0.156435385, 0.122193664, -0.980100334)
 local titik2 = CFrame.new(53.7295532, 524.085571, -195.608505, -0.0581439883, 0.175470933, -0.982766092, -1.55020139e-08, 0.984431565, 0.175768301, 0.998308182, 0.010219885, -0.0572387725)
 
-local player = game.Players.LocalPlayer
-local isTeleporting = false
-local delayTeleport = 0.5 -- Default delay bawaan kamu
+-- ====================================================
+-- MEMBUAT TAMPILAN GUI
+-- ====================================================
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "TenkaHubGui"
+screenGui.ResetOnSpawn = false
+screenGui.Parent = starterGui
 
--- Gui
-local Window = MacLib:Window({
-	Title = "Zayn Hub",
-	Subtitle = "🌽Grow It RNG [MOON FARM]",
-	Size = UDim2.fromOffset(600, 600),
-	DragStyle = 1,
-	DisabledWindowControls = {},
-	ShowUserInfo = true,
-	Keybind = Enum.KeyCode.RightControl,
-	AcrylicBlur = true,
-})
+-- KOTAK UTAMA (Background)
+local mainFrame = Instance.new("Frame")
+mainFrame.Name = "MainFrame"
+mainFrame.Size = UDim2.new(0, 220, 0, 110)
+mainFrame.Position = UDim2.new(0.1, 0, 0.2, 0)
+mainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20) -- Hitam pekat
+mainFrame.BorderSizePixel = 1
+mainFrame.BorderColor3 = Color3.fromRGB(255, 255, 255) -- Garis tepi putih
+mainFrame.Parent = screenGui
 
--- 3. GLOBAL SETTINGS BROWSER UI
-local globalSettings = {
-	UIBlurToggle = Window:GlobalSetting({
-		Name = "UI Blur",
-		Default = Window:GetAcrylicBlurState(),
-		Callback = function(bool)
-			Window:SetAcrylicBlurState(bool)
-		end,
-	}),
-	NotificationToggler = Window:GlobalSetting({
-		Name = "Notifications",
-		Default = Window:GetNotificationsState(),
-		Callback = function(bool)
-			Window:SetNotificationsState(bool)
-		end,
-	})
-}
+local mainCorner = Instance.new("UICorner")
+mainCorner.CornerRadius = UDim.new(0, 8)
+mainCorner.Parent = mainFrame
 
-local tabGroups = {
-	TabGroup1 = Window:TabGroup()
-}
+-- IKON CUSTOM ANIME (IZUMO TENKA) - UNTUK DIHOLD/GESER
+local dragIcon = Instance.new("ImageLabel")
+dragIcon.Name = "DragIcon"
+dragIcon.Size = UDim2.new(0, 32, 0, 32)
+dragIcon.Position = UDim2.new(0, 10, 0, 10)
+dragIcon.BackgroundTransparency = 1
+dragIcon.Image = "rbxassetid://100900056737102" -- ID Anime pilihanmu!
+dragIcon.Parent = mainFrame
 
-local tabs = {
-	Main = tabGroups.TabGroup1:Tab({ Name = "Main Features", Image = "rbxassetid://18821914323" }),
-	Settings = tabGroups.TabGroup1:Tab({ Name = "Settings", Image = "rbxassetid://10734950309" })
-}
+-- UI Corner biar foto animenya membulat rapi seperti foto profil
+local iconCorner = Instance.new("UICorner")
+iconCorner.CornerRadius = UDim.new(1, 0) 
+iconCorner.Parent = dragIcon
 
-local sections = {
-	MainSection1 = tabs.Main:Section({ Side = "Left" }),
-}
+-- TOMBOL TELEPORT
+local button = Instance.new("TextButton")
+button.Name = "ToggleButton"
+button.Size = UDim2.new(0, 180, 0, 45)
+button.Position = UDim2.new(0.5, -90, 0.5, -5)
+button.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+button.TextColor3 = Color3.fromRGB(255, 255, 255)
+button.TextSize = 16
+button.Font = Enum.Font.SourceSansBold
+button.Text = "START TELEPORT"
+button.BorderSizePixel = 1
+button.BorderColor3 = Color3.fromRGB(255, 255, 255)
+button.Parent = mainFrame
 
--- 4. KONTEN UTAMA FITUR KAMU
-sections.MainSection1:Header({
-	Name = "Farming & Teleportation"
-})
+local buttonCorner = Instance.new("UICorner")
+buttonCorner.CornerRadius = UDim.new(0, 6)
+buttonCorner.Parent = button
 
--- FUNGSI LOOP TELEPORT RAPI KAMU
+-- ====================================================
+-- SISTEM GESER (DRAG MECHANISM)
+-- ====================================================
+local dragging, dragInput, dragStart, startPos
+
+local function update(input)
+	local delta = input.Position - dragStart
+	mainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+dragIcon.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		dragging = true
+		dragStart = input.Position
+		startPos = mainFrame.Position
+		
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragging = false
+			end
+		end)
+	end
+end)
+
+dragIcon.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		dragInput = input
+	end
+end)
+
+userInputService.InputChanged:Connect(function(input)
+	if input == dragInput and dragging then
+		update(input)
+	end
+end)
+
+-- ====================================================
+-- SISTEM LOGIKA LOOP TELEPORT (DELAY 0.5 DETIK)
+-- ====================================================
+local isTeleporting = false 
+
 local function startLoop()
 	while isTeleporting do
 		local character = player.Character or player.CharacterAdded:Wait()
 		local rootPart = character:WaitForChild("HumanoidRootPart")
 		
 		rootPart.CFrame = titik1
-		task.wait(delayTeleport)
+		task.wait(0.5) -- Jeda di titik 1 selama 0.5 detik
 		
 		if not isTeleporting then break end
 		
 		rootPart.CFrame = titik2
-		task.wait(delayTeleport)
+		task.wait(0.5) -- Jeda di titik 2 selama 0.5 detik
 	end
 end
 
--- TOGGLE AKTIVASI LOOP TELEPORT
-sections.MainSection1:Toggle({
-	Name = "Enable Loop Teleport",
-	Default = false,
-	Callback = function(value)
-		isTeleporting = value
-		if isTeleporting then
-			Window:Notify({
-				Title = "Zayn Hub",
-				Description = "Loop Teleportation Activated!",
-				Lifetime = 3
-			})
-			task.spawn(startLoop)
-		else
-			Window:Notify({
-				Title = "Zayn Hub",
-				Description = "Loop Teleportation Deactivated.",
-				Lifetime = 3
-			})
-		end
-	end,
-}, "TeleportToggle")
-
--- SLIDER UNTUK MENGATUR KECEPATAN DELAY (Bisa diatur sesuka hati live di game)
-sections.MainSection1:Slider({
-	Name = "Teleport Delay (Seconds)",
-	Default = 5, -- Berarti 0.5 Detik
-	Minimum = 1, -- 0.1 Detik
-	Maximum = 20, -- 2.0 Detik
-	DisplayMethod = "Value",
-	Precision = 0,
-	Callback = function(Value)
-		delayTeleport = Value / 10
+button.MouseButton1Click:Connect(function()
+	isTeleporting = not isTeleporting 
+	
+	if isTeleporting then
+		button.Text = "[ ACTIVE ] STOP"
+		button.TextColor3 = Color3.fromRGB(255, 100, 100)
+		task.spawn(startLoop)
+	else
+		button.Text = "START TELEPORT"
+		button.TextColor3 = Color3.fromRGB(255, 255, 255)
 	end
-}, "SpeedSlider")
-
-sections.MainSection1:Divider()
-
-sections.MainSection1:Paragraph({
-	Header = "Information",
-	Body = "Welcome to Zayn Hub! Press 'RightControl' on your keyboard to hide or show this beautiful menu window."
-})
-
--- 5. AKHIR DARI KONFIGURASI LOADER
-MacLib:SetFolder("Maclib_ZaynHub")
-tabs.Settings:InsertConfigSection("Left")
-
-Window.onUnloaded(function()
-	isTeleporting = false
-	print("Zayn Hub Unloaded Safely!")
 end)
-
-tabs.Main:Select()
-MacLib:LoadAutoLoadConfig()
