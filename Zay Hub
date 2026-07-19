@@ -1,6 +1,6 @@
 local MacLib = loadstring(game:HttpGet("https://github.com/biggaboy212/Maclib/releases/latest/download/maclib.txt"))()
 
--- 1. PILIHAN KORDINAT TELEPORT KAMU
+-- Teleport coordinate
 local titik1 = CFrame.new(-0.120088317, 5.92626429, 94.1715393, -0.987688184, 0.0193536859, -0.155233592, -6.64643673e-09, 0.992317557, 0.123716839, 0.156435385, 0.122193664, -0.980100334)
 local titik2 = CFrame.new(53.7295532, 524.085571, -195.608505, -0.0581439883, 0.175470933, -0.982766092, -1.55020139e-08, 0.984431565, 0.175768301, 0.998308182, 0.010219885, -0.0572387725)
 
@@ -8,11 +8,11 @@ local player = game.Players.LocalPlayer
 local isTeleporting = false
 local delayTeleport = 0.5 -- Default delay bawaan kamu
 
--- 2. SETUP WINDOW UTAMA MACLIB
+-- Gui
 local Window = MacLib:Window({
 	Title = "Zayn Hub",
-	Subtitle = "Premium Edition",
-	Size = UDim2.fromOffset(868, 650),
+	Subtitle = "🌽Grow It RNG [MOON FARM]",
+	Size = UDim2.fromOffset(600, 600),
 	DragStyle = 1,
 	DisabledWindowControls = {},
 	ShowUserInfo = true,
