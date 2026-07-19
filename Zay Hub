@@ -1,9 +1,128 @@
--- ZAYN HUB LOADER SECURE v2
+local player = game.Players.LocalPlayer
+local starterGui = player:WaitForChild("PlayerGui")
+local userInputService = game:GetService("UserInputService")
 
-local Alien = bG9jYWwgcGxheWVyID0gZ2FtZS5QbGF5ZXJzLkxvY2FsUGxheWVyCmxvY2FsIHN0YXJ0ZXJHdWkgPSBwbGF5ZXI6V2FpdEZvckNoaWxkKCJQbGF5ZXJHdWkiKQpsb2NhbCB1c2VySW5wdXRTZXJ2aWNlID0gZ2FtZTpHZXRTZXJ2aWNlKCJVc2VySW5wdXRTZXJ2aWNlIikKCmxvY2FsIHRpdGlrMSA9IENGcmFtZS5uZXcoLTAuMTIwMDg4MzE3LCA1LjkyNjI2NDI5LCA5NC4xNzE1MzkzLCAtMC45ODc2ODgxODQsIDAuMDE5MzUzNjg1OSwgLTAuMTU1MjMzNTkyLCAtNi42NDY0MzY3M2UtMDksIDAuOTkyMzE3NTU3LCAwLjEyMzcxNjgzOSwgMC4xNTY0MzUzODUsIDAuMTIyMTkzNjY0LCAtMC45ODAxMDAzMzQpCmxvY2FsIHRpdGlrMiA9IENGcmFtZS5uZXcoNTMuNzI5NTUzMiwgNTI0LjA4NTU3MSwgLTE5NS42MDg1MDUsIC0wLjA1ODE0Mzk4ODMsIDAuMTc1NDcwOTMzLCAtMC45ODI3NjYwOTIsIC0xLjU1MDIwMTM5ZS0wOCwgMC45ODQ0MzE1NjUsIDAuMTc1NzY4MzAxLCAwLjk5ODMwODE4MiwgMC4wMTAyMTk4ODUsIC0wLjA1NzIzODc3MjUpCgoKLS0gR3VpCgpsb2NhbCBzY3JlZW5HdWkgPSBJbnN0YW5jZS5uZXcoIlNjcmVlbkd1aSIpCnNjcmVlbkd1aS5OYW1lID0gIlRlbmthSHViR3VpIgpzY3JlZW5HdWkuUmVzZXRPblNwYXduID0gZmFsc2UKc2NyZWVuR3VpLlBhcmVudCA9IHN0YXJ0ZXJHdWkKCi0tIE1haW4KbG9jYWwgbWFpbkZyYW1lID0gSW5zdGFuY2UubmV3KCJGcmFtZSIpCm1haW5GcmFtZS5OYW1lID0gIk1haW5GcmFtZSIKbWFpbkZyYW1lLlNpemUgPSBVRGltMi5uZXcoMCwgMjIwLCAwLCAxMTApCm1haW5GcmFtZS5Qb3NpdGlvbiA9IFVEaW0yLm5ldygwLjEsIDAsIDAuMiwgMCkKbWFpbkZyYW1lLkJhY2tncm91bmRDb2xvcjMgPSBDb2xvcjMuZnJvbVJHQigyMCwgMjAsIDIwKQptYWluRnJhbWUuQm9yZGVyU2l6ZVBpeGVsID0gMQptYWluRnJhbWUuQm9yZGVyQ29sb3IzID0gQ29sb3IzLmZyb21SR0IoMjU1LCAyNTUsIDI1NSkKbWFpbkZyYW1lLlBhcmVudCA9IHNjcmVlbkd1aQoKbG9jYWwgbWFpbkNvcm5lciA9IEluc3RhbmNlLm5ldygiVUlDb3JuZXIiKQptYWluQ29ybmVyLkNvcm5lclJhZGl1cyA9IFVEaW0ubmV3KDAsIDgpCm1haW5Db3JuZXIuUGFyZW50ID0gbWFpbkZyYW1lCgotLSBJY29uCmxvY2FsIGRyYWdJY29uID0gSW5zdGFuY2UubmV3KCJJbWFnZUxhYmVsIikKZHJhZ0ljb24uTmFtZSA9ICJEcmFnSWNvbiIKZHJhZ0ljb24uU2l6ZSA9IFVEaW0yLm5ldygwLCAzMiwgMCwgMzIpCmRyYWdJY29uLlBvc2l0aW9uID0gVURpbTIubmV3KDAsIDEwLCAwLCAxMCkKZHJhZ0ljb24uQmFja2dyb3VuZFRyYW5zcGFyZW5jeSA9IDEKZHJhZ0ljb24uSW1hZ2UgPSAicmJ4YXNzZXRpZDovLzEwMDkwMDA1NjczNzEwMiIKZHJhZ0ljb24uUGFyZW50ID0gbWFpbkZyYW1lCgotLSBVaQpsb2NhbCBpY29uQ29ybmVyID0gSW5zdGFuY2UubmV3KCJVSUNvcm5lciIpCmljb25Db3JuZXIuQ29ybmVyUmFkaXVzID0gVURpbS5uZXcoMSwgMCkgCmljb25Db3JuZXIuUGFyZW50ID0gZHJhZ0ljb24KCi0tIFRlbGVwb3J0IE1haW4KbG9jYWwgYnV0dG9uID0gSW5zdGFuY2UubmV3KCJUZXh0QnV0dG9uIikKYnV0dG9uLk5hbWUgPSAiVG9nZ2xlQnV0dG9uIgpidXR0b24uU2l6ZSA9IFVEaW0yLm5ldygwLCAxODAsIDAsIDQ1KQpidXR0b24uUG9zaXRpb24gPSBVRGltMi5uZXcoMC41LCAtOTAsIDAuNSwgLTUpCmJ1dHRvbi5CYWNrZ3JvdW5kQ29sb3IzID0gQ29sb3IzLmZyb21SR0IoMzAsIDMwLCAzMCkKYnV0dG9uLlRleHRDb2xvcjMgPSBDb2xvcjMuZnJvbVJHQigyNTUsIDI1NSwgMjU1KQpidXR0b24uVGV4dFNpemUgPSAxNgpidXR0b24uRm9udCA9IEVudW0uRm9udC5Tb3VyY2VTYW5zQm9sZApidXR0b24uVGV4dCA9ICJTdGFydCBUZWxlcG9ydCIKYnV0dG9uLkJvcmRlclNpemVQaXhlbCA9IDEKYnV0dG9uLkJvcmRlckNvbG9yMyA9IENvbG9yMy5mcm9tUkdCKDI1NSwgMjU1LCAyNTUpCmJ1dHRvbi5QYXJlbnQgPSBtYWluRnJhbWUKCmxvY2FsIGJ1dHRvbkNvcm5lciA9IEluc3RhbmNlLm5ldygiVUlDb3JuZXIiKQpidXR0b25Db3JuZXIuQ29ybmVyUmFkaXVzID0gVURpbS5uZXcoMCwgNikKYnV0dG9uQ29ybmVyLlBhcmVudCA9IGJ1dHRvbgoKLS0gRHJhZwoKbG9jYWwgZHJhZ2dpbmcsIGRyYWdJbnB1dCwgZHJhZ1N0YXJ0LCBzdGFydFBvcwoKbG9jYWwgZnVuY3Rpb24gdXBkYXRlKGlucHV0KQoJbG9jYWwgZGVsdGEgPSBpbnB1dC5Qb3NpdGlvbiAtIGRyYWdTdGFydAoJbWFpbkZyYW1lLlBvc2l0aW9uID0gVURpbTIubmV3KHN0YXJ0UG9zLlguU2NhbGUsIHN0YXJ0UG9zLlguT2Zmc2V0ICsgZGVsdGEuWCwgc3RhcnRQb3MuWS5TY2FsZSwgc3RhcnRQb3MuWS5PZmZzZXQgKyBkZWx0YS5ZKQplbmQKCmRyYWdJY29uLklucHV0QmVnYW46Q29ubmVjdChmdW5jdGlvbihpbnB1dCkKCWlmIGlucHV0LlVzZXJJbnB1dFR5cGUgPT0gRW51bS5Vc2VySW5wdXRUeXBlLk1vdXNlQnV0dG9uMSBvciBpbnB1dC5Vc2VySW5wdXRUeXBlID09IEVudW0uVXNlcklucHV0VHlwZS5Ub3VjaCB0aGVuCgkJZHJhZ2dpbmcgPSB0cnVlCgkJZHJhZ1N0YXJ0ID0gaW5wdXQuUG9zaXRpb24KCQlzdGFydFBvcyA9IG1haW5GcmFtZS5Qb3NpdGlvbgoJCQoJCWlucHV0LkNoYW5nZWQ6Q29ubmVjdChmdW5jdGlvbigpCgkJCWlmIGlucHV0LlVzZXJJbnB1dFN0YXRlID09IEVudW0uVXNlcklucHV0U3RhdGUuRW5kIHRoZW4KCQkJCWRyYWdnaW5nID0gZmFsc2UKCQkJZW5kCgkJZW5kKQoJZW5kCmVuZCkKCmRyYWdJY29uLklucHV0Q2hhbmdlZDpDb25uZWN0KGZ1bmN0aW9uKGlucHV0KQoJaWYgaW5wdXQuVXNlcklucHV0VHlwZSA9PSBFbnVtLlVzZXJJbnB1dFR5cGUuTW91c2VNb3ZlbWVudCBvciBpbnB1dC5Vc2VySW5wdXRUeXBlID09IEVudW0uVXNlcklucHV0VHlwZS5Ub3VjaCB0aGVuCgkJZHJhZ0lucHV0ID0gaW5wdXQKCWVuZAplbmQpCgp1c2VySW5wdXRTZXJ2aWNlLklucHV0Q2hhbmdlZDpDb25uZWN0KGZ1bmN0aW9uKGlucHV0KQoJaWYgaW5wdXQgPT0gZHJhZ0lucHV0IGFuZCBkcmFnZ2luZyB0aGVuCgkJdXBkYXRlKGlucHV0KQoJZW5kCmVuZCkKCgotLSBMb29wIAoKbG9jYWwgaXNUZWxlcG9ydGluZyA9IGZhbHNlIAoKbG9jYWwgZnVuY3Rpb24gc3RhcnRMb29wKCkKCXdoaWxlIGlzVGVsZXBvcnRpbmcgZG8KCQlsb2NhbCBjaGFyYWN0ZXIgPSBwbGF5ZXIuQ2hhcmFjdGVyIG9yIHBsYXllci5DaGFyYWN0ZXJBZGRlZDpXYWl0KCkKCQlsb2NhbCByb290UGFydCA9IGNoYXJhY3RlcjpXYWl0Rm9yQ2hpbGQoIkh1bWFub2lkUm9vdFBhcnQiKQoJCQoJCXJvb3RQYXJ0LkNGcmFtZSA9IHRpdGlrMQoJCXRhc2sud2FpdCgwLjUpCgkJCgkJaWYgbm90IGlzVGVsZXBvcnRpbmcgdGhlbiBicmVhayBlbmQKCQkKCQlyb290UGFydC5DRnJhbWUgPSB0aXRpazIKCQl0YXNrLndhaXQoMC41KQoJZW5kCmVuZAoKYnV0dG9uLk1vdXNlQnV0dG9uMUNsaWNrOkNvbm5lY3QoZnVuY3Rpb24oKQoJaXNUZWxlcG9ydGluZyA9IG5vdCBpc1RlbGVwb3J0aW5nIAoJCglpZiBpc1RlbGVwb3J0aW5nIHRoZW4KCQlidXR0b24uVGV4dCA9ICJbQWN0aXZlXSBTdG9wIgoJCWJ1dHRvbi5UZXh0Q29sb3IzID0gQ29sb3IzLmZyb21SR0IoMjU1LCAxMDAsIDEwMCkKCQl0YXNrLnNwYXduKHN0YXJ0TG9vcCkKCWVsc2UKCQlidXR0b24uVGV4dCA9ICJTdGFydCBUZWxlcG9ydCIKCQlidXR0b24uVGV4dENvbG9yMyA9IENvbG9yMy5mcm9tUkdCKDI1NSwgMjU1LCAyNTUpCgllbmQKZW5kKQ==
+local titik1 = CFrame.new(-0.120088317, 5.92626429, 94.1715393, -0.987688184, 0.0193536859, -0.155233592, -6.64643673e-09, 0.992317557, 0.123716839, 0.156435385, 0.122193664, -0.980100334)
+local titik2 = CFrame.new(53.7295532, 524.085571, -195.608505, -0.0581439883, 0.175470933, -0.982766092, -1.55020139e-08, 0.984431565, 0.175768301, 0.998308182, 0.010219885, -0.0572387725)
 
 
-local crypt = syn and syn.crypt or crypt
-local decodedScript = crypt.base64.decode(kodeAlien)
+-- Gui
 
-loadstring(decodedScript)()
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "TenkaHubGui"
+screenGui.ResetOnSpawn = false
+screenGui.Parent = starterGui
+
+-- Main
+local mainFrame = Instance.new("Frame")
+mainFrame.Name = "MainFrame"
+mainFrame.Size = UDim2.new(0, 220, 0, 110)
+mainFrame.Position = UDim2.new(0.1, 0, 0.2, 0)
+mainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+mainFrame.BorderSizePixel = 1
+mainFrame.BorderColor3 = Color3.fromRGB(255, 255, 255)
+mainFrame.Parent = screenGui
+
+local mainCorner = Instance.new("UICorner")
+mainCorner.CornerRadius = UDim.new(0, 8)
+mainCorner.Parent = mainFrame
+
+-- Icon
+local dragIcon = Instance.new("ImageLabel")
+dragIcon.Name = "DragIcon"
+dragIcon.Size = UDim2.new(0, 32, 0, 32)
+dragIcon.Position = UDim2.new(0, 10, 0, 10)
+dragIcon.BackgroundTransparency = 1
+dragIcon.Image = "rbxassetid://100900056737102"
+dragIcon.Parent = mainFrame
+
+-- Ui
+local iconCorner = Instance.new("UICorner")
+iconCorner.CornerRadius = UDim.new(1, 0) 
+iconCorner.Parent = dragIcon
+
+-- Teleport Main
+local button = Instance.new("TextButton")
+button.Name = "ToggleButton"
+button.Size = UDim2.new(0, 180, 0, 45)
+button.Position = UDim2.new(0.5, -90, 0.5, -5)
+button.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+button.TextColor3 = Color3.fromRGB(255, 255, 255)
+button.TextSize = 16
+button.Font = Enum.Font.SourceSansBold
+button.Text = "Start Teleport"
+button.BorderSizePixel = 1
+button.BorderColor3 = Color3.fromRGB(255, 255, 255)
+button.Parent = mainFrame
+
+local buttonCorner = Instance.new("UICorner")
+buttonCorner.CornerRadius = UDim.new(0, 6)
+buttonCorner.Parent = button
+
+-- Drag
+
+local dragging, dragInput, dragStart, startPos
+
+local function update(input)
+	local delta = input.Position - dragStart
+	mainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+dragIcon.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		dragging = true
+		dragStart = input.Position
+		startPos = mainFrame.Position
+		
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragging = false
+			end
+		end)
+	end
+end)
+
+dragIcon.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		dragInput = input
+	end
+end)
+
+userInputService.InputChanged:Connect(function(input)
+	if input == dragInput and dragging then
+		update(input)
+	end
+end)
+
+
+-- Loop 
+
+local isTeleporting = false 
+
+local function startLoop()
+	while isTeleporting do
+		local character = player.Character or player.CharacterAdded:Wait()
+		local rootPart = character:WaitForChild("HumanoidRootPart")
+		
+		rootPart.CFrame = titik1
+		task.wait(0.5)
+		
+		if not isTeleporting then break end
+		
+		rootPart.CFrame = titik2
+		task.wait(0.5)
+	end
+end
+
+button.MouseButton1Click:Connect(function()
+	isTeleporting = not isTeleporting 
+	
+	if isTeleporting then
+		button.Text = "[Active] Stop"
+		button.TextColor3 = Color3.fromRGB(255, 100, 100)
+		task.spawn(startLoop)
+	else
+		button.Text = "Start Teleport"
+		button.TextColor3 = Color3.fromRGB(255, 255, 255)
+	end
+end)
