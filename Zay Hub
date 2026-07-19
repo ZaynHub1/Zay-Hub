@@ -2,21 +2,17 @@ local player = game.Players.LocalPlayer
 local starterGui = player:WaitForChild("PlayerGui")
 local userInputService = game:GetService("UserInputService")
 
--- ====================================================
--- KOORDINAT TELEPORT KAMU
--- ====================================================
+-- TP
 local titik1 = CFrame.new(-0.120088317, 5.92626429, 94.1715393, -0.987688184, 0.0193536859, -0.155233592, -6.64643673e-09, 0.992317557, 0.123716839, 0.156435385, 0.122193664, -0.980100334)
 local titik2 = CFrame.new(53.7295532, 524.085571, -195.608505, -0.0581439883, 0.175470933, -0.982766092, -1.55020139e-08, 0.984431565, 0.175768301, 0.998308182, 0.010219885, -0.0572387725)
 
--- ====================================================
--- MEMBUAT TAMPILAN GUI
--- ====================================================
+-- UI
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "TenkaHubGui"
 screenGui.ResetOnSpawn = false
 screenGui.Parent = starterGui
 
--- KOTAK UTAMA (Background)
+-- MAIN
 local mainFrame = Instance.new("Frame")
 mainFrame.Name = "MainFrame"
 mainFrame.Size = UDim2.new(0, 220, 0, 110)
@@ -30,7 +26,7 @@ local mainCorner = Instance.new("UICorner")
 mainCorner.CornerRadius = UDim.new(0, 8)
 mainCorner.Parent = mainFrame
 
--- IKON CUSTOM ANIME (IZUMO TENKA) - UNTUK DIHOLD/GESER
+-- ICON
 local dragIcon = Instance.new("ImageLabel")
 dragIcon.Name = "DragIcon"
 dragIcon.Size = UDim2.new(0, 32, 0, 32)
@@ -39,12 +35,12 @@ dragIcon.BackgroundTransparency = 1
 dragIcon.Image = "rbxassetid://100900056737102" -- ID Anime pilihanmu!
 dragIcon.Parent = mainFrame
 
--- UI Corner biar foto animenya membulat rapi seperti foto profil
+-- UI ICON
 local iconCorner = Instance.new("UICorner")
 iconCorner.CornerRadius = UDim.new(1, 0) 
 iconCorner.Parent = dragIcon
 
--- TOMBOL TELEPORT
+-- TELEPORT MISC
 local button = Instance.new("TextButton")
 button.Name = "ToggleButton"
 button.Size = UDim2.new(0, 180, 0, 45)
@@ -62,9 +58,7 @@ local buttonCorner = Instance.new("UICorner")
 buttonCorner.CornerRadius = UDim.new(0, 6)
 buttonCorner.Parent = button
 
--- ====================================================
--- SISTEM GESER (DRAG MECHANISM)
--- ====================================================
+-- DRAG
 local dragging, dragInput, dragStart, startPos
 
 local function update(input)
@@ -98,9 +92,7 @@ userInputService.InputChanged:Connect(function(input)
 	end
 end)
 
--- ====================================================
--- SISTEM LOGIKA LOOP TELEPORT (DELAY 0.5 DETIK)
--- ====================================================
+-- LOOP
 local isTeleporting = false 
 
 local function startLoop()
